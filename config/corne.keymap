@@ -149,12 +149,12 @@
 		tapping-term-ms = <200>;
 		bindings = <&kp SPACE>, <&kp RET>;
 	};
-	td2: bksp_tap_dance {
+	td2: bksp_mod_tap_dance {
 		compatible = "zmk,behavior-tap-dance";
 		label = "TD_BACKSPACY";
 		#binding-cells = <0>;
 		tapping-term-ms = <200>;
-		bindings = <&kp BKSP>, <&kp LA(BKSP)>;
+		bindings = <&kp BKSP>, <&mt RA(ESC) ESC>;
 	};
 	td3: mousebutton_tap_dance {
 		compatible = "zmk,behavior-tap-dance";
@@ -209,6 +209,18 @@
 
   combos {
         compatible = "zmk,combos";
+	combo_sys {
+            timeout-ms = <50>;
+            key-positions = <35 41>;
+	    require-prior-idle-ms = <175>;
+            bindings = <&mo SYS_L>;
+        };
+	combo_num {
+            timeout-ms = <50>;
+            key-positions = <39 40>;
+	    require-prior-idle-ms = <175>;
+            bindings = <&mo NUM_R>;
+        };
 	combo_snglqt {
             timeout-ms = <50>;
             key-positions = <5 6>;
@@ -404,14 +416,14 @@
 
     keymap {
         compatible = "zmk,keymap";
-// brauche &mt RA(ESC) ESC    &kp LCTRL &mo NUM_R &mo SYS_L
+// brauche &kp LCTRL  
         base_layer {
             label = "Base";
             bindings = <
- &td4    &kp Q      &kp W      &kp E      &kp R       &kp T       &kp Y    &kp U       &kp I       &kp O      &kp P     &td0
- &mo NAV_L  &kp A   &kp S      &kp D      &kp F       &kp G       &kp H    &kp J       &kp K       &kp L      &kp SEMI	 &lt NAV_L QUOT
- &kp LSHFT  &kp Z   &kp X      &kp C      &kp V       &kp B       &kp N    &kp M       &kp COMMA   &kp DOT    &kp FSLH  &kp LSHIFT
-                               &kp LALT   &kp LGUI    &kp BKSP    &td1     &kp RGUI    &kp RALT   
+ &td4    &kp Q      &kp W      &kp E      &kp R       &kp T       	&kp Y    &kp U       &kp I       &kp O      &kp P     &td0
+ &mo NAV_L  &kp A   &kp S      &kp D      &kp F       &kp G       	&kp H    &kp J       &kp K       &kp L      &kp SEMI	 &lt NAV_L QUOT
+ &kp LSHFT  &kp Z   &kp X      &kp C      &kp V       &kp B       	&kp N    &kp M       &kp COMMA   &kp DOT    &kp FSLH  &kp LSHIFT
+                               &kp LALT   &kp LGUI    &mt NUM_R BKSP    &td1     &kp RGUI    &kp RALT   
             >;
         };
 
@@ -428,19 +440,19 @@
         sys_layer {
             label = "Sys";
             bindings = <
-&none	   &bootloader  &trans 	&trans 	&trans    &trans   &trans    &bt BT(0)  &bt BT(1)   &bt BT(2)    &bt BT(3)  &bt BT(4)
-&kp F1     &kp F2   	&kp F3 	&kp F4 	&kp F5    &kp F6   &kp F7    &kp F8     &kp F9      &kp F10      &kp F11    &kp F12
-&sys_reset &trans	&trans 	&trans 	  &trans   &trans    &trans  &bt BT_CLR &trans      &trans       &trans     &trans
-                              &trans    &trans    &trans   &trans    &trans     &trans      
+&bootloader  &sys_reset  &trans &trans 	&trans    &trans   &trans    &bt BT(0)  &bt BT(1)   &bt BT(2)    &bt BT(3)  &bt BT(4)
+&kp F1       &kp F2   	&kp F3 	&kp F4 	&kp F5    &kp F6   &kp F7    &kp F8     &kp F9      &kp F10      &kp F11    &kp F12
+&trans       &trans	&trans 	&trans 	&trans    &trans    &trans    &bt BT_CLR &trans      &trans       &trans     &trans
+                                &trans  &trans    &trans   &trans    &trans     &trans      
             >;
         };
 
 num2_layer {
             label = "Num2";
             bindings = <
-&trans     &trans   	&trans 	&trans 	&trans    &trans   &kp LS(RBKT) &kp N7     &kp N8      &kp N9       &kp LS(N7) &trans
-&trans     &trans	&trans 	&trans 	&trans    &trans   &kp RBKT  	&kp N4     &kp N5      &kp N6       &kp N0     &trans
-&trans     &trans	&trans 	&trans 	&trans    &trans   &kp FSLH    	&kp N1     &kp N2      &kp N3       &kp LS(N0) &trans
+&mt RA(ESC) ESC &trans  &trans 	&trans 	&trans    &trans   &kp LS(RBKT) &kp N7     &kp N8      &kp N9       &kp LS(N7) &trans
+&trans     	&trans	&trans 	&trans 	&trans    &trans   &kp RBKT  	&kp N4     &kp N5      &kp N6       &kp N0     &trans
+&trans     	&trans	&trans 	&trans 	&trans    &trans   &kp FSLH    	&kp N1     &kp N2      &kp N3       &kp LS(N0) &trans
                         	&trans  &trans    &trans   &trans       &trans     &trans      
             >;
         };
