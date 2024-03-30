@@ -20,6 +20,7 @@
 
 #define BT(n) BT_SEL n
 
+/ {
   macros {
         mouse_l: mouse_l {
             compatible = "zmk,behavior-macro";
