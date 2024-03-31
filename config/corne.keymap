@@ -170,6 +170,13 @@
 		tapping-term-ms = <200>;
 		bindings = <&kp TAB>, <&kp LG(LS(EQUAL))>;
 	};
+	td5: option_control {
+		compatible = "zmk,behavior-tap-dance";
+		label = "TD_OPTCONT";
+		#binding-cells = <0>;
+		tapping-term-ms = <200>;
+		bindings = <&kp LALT>, <&kp LCTRL)>;
+	};
 	par: paranthesis_tap_dance {
 		compatible = "zmk,behavior-tap-dance";
 		label = "TD_PAR";
@@ -419,10 +426,10 @@
         base_layer {
             label = "Base";
             bindings = <
- &td4    &kp Q      &kp W      &kp E      	&kp R       &kp T           &kp Y    &kp U       &kp I       &kp O      &kp P     &td0
- &mo NAV_L  &kp A   &kp S      &kp D      	&kp F       &kp G           &kp H    &kp J       &kp K       &kp L      &kp SEMI  &lt NAV_L QUOT
- &kp LSHFT  &kp Z   &kp X      &kp C      	&kp V       &kp B           &kp N    &kp M       &kp COMMA   &kp DOT    &kp FSLH  &kp LSHIFT
-                               &mt LCTRL LALT   &kp LGUI    &lt NUM_R BKSP  &td1     &kp RGUI    &mt RCTRL RALT   
+ &td4    &kp Q      &kp W      &kp E      &kp R       &kp T           &kp Y    &kp U       &kp I       &kp O      &kp P     &td0
+ &mo NAV_L  &kp A   &kp S      &kp D      &kp F       &kp G           &kp H    &kp J       &kp K       &kp L      &kp SEMI  &lt NAV_L QUOT
+ &kp LSHFT  &kp Z   &kp X      &kp C      &kp V       &kp B           &kp N    &kp M       &kp COMMA   &kp DOT    &kp FSLH  &kp LSHIFT
+                               &td5   	  &kp LGUI    &lt NUM_R BKSP  &td1     &kp RGUI    &td5   
             >;
         };
 
